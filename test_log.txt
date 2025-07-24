@@ -1,0 +1,33 @@
+CustomScript Compiler Design - Phase 1 Testing Log
+--------------------------------------------------
+
+1. Normal Test Cases:
+
+Test Case: 
+var x = 10;
+var y = x + 5;
+print(y);
+
+- Lexer Output: Passed (Tokens generated correctly)
+- Parser Output: Passed (Parsed successfully, AST generated)
+- GUI Output: Passed (Tokens and AST shown correctly)
+
+2. Edge Test Cases:
+
+Test Case 1: var x = ;
+- Lexer Output: Passed (Tokens: VAR, IDENTIFIER, EQUALS, SEMI)
+- Parser Output: Failed (Syntax error: Expected expression after '=')
+
+Test Case 2: var x = 10
+          var y = x + 5;
+- Lexer Output: Passed (Tokens generated correctly)
+- Parser Output: Failed (Syntax error: Missing semicolon after statement)
+
+Test Case 3: print(z);
+- Lexer Output: Passed (Tokens: PRINT, LPAREN, IDENTIFIER, RPAREN, SEMI)
+- Parser Output: Passed (Parsed successfully; semantic check for undeclared variable to be done in next phase)
+
+3. Notes:
+- The lexer correctly tokenizes all inputs including edge cases.
+- Parser raises appropriate syntax errors for missing expressions and missing semicolons.
+- Semantic errors such as undeclared variables will be handled in Phase 2.

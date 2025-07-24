@@ -1,0 +1,6 @@
+var y = 2;
+if (y > 5) {
+    print(y);
+} else {
+    print(0);
+}

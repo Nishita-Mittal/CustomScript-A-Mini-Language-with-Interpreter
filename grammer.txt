@@ -1,0 +1,13 @@
+# Grammar for CustomScript
+
+program        → statements
+statements     → statement statements | statement
+statement      → 'var' IDENTIFIER '=' expression ';'
+               | 'print' '(' expression ')' ';'
+expression     → expression '+' term
+               | expression '-' term
+               | term
+term           → term '*' factor
+               | term '/' factor
+               | factor
+factor         → NUMBER | IDENTIFIER | '(' expression ')'

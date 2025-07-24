@@ -1,0 +1,41 @@
+// Variable declarations and assignments
+var x = 2;
+var y = 3;
+var z = x * y + 5;
+print(z); // Should print 11
+
+// If/else and nested if/else
+if (z > 10) {
+    print(100);
+    if (x == 2) {
+        print(200);
+    } else {
+        print(300);
+    }
+} else {
+    print(400);
+}
+
+// While loop
+var sum = 0;
+var i = 1;
+while (i <= 5) {
+    sum = sum + i;
+    i = i + 1;
+}
+print(sum); // Should print 15
+
+// For loop (with variable declaration and assignment in header)
+var total = 0;
+for (var j = 1; j <= 4; j = j + 1) {
+    total = total + j;
+}
+print(total); // Should print 10
+
+// Multiple statements in a block and comments
+if (x < y) {
+    // This block will not execute
+    print(999);
+} else {
+    print(888); // This will print
+}

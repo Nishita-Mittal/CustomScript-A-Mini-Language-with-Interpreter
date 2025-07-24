@@ -1,0 +1,91 @@
+# CustomScript Manual & Code Examples
+
+## Variable Declaration
+```
+var x = 5;
+```
+
+## Assignment
+```
+x = 10;
+```
+
+## Print Statement
+```
+print(x);
+```
+
+## While Loop
+```
+var x = 3;
+while (x > 0) {
+    print(x);
+    x = x - 1;
+}
+```
+
+## If-Else Statement
+```
+var y = 2;
+if (y > 5) {
+    print(y);
+} else {
+    print(0);
+}
+```
+
+## Combined Example
+```
+var x = 2;
+while (x < 5) {
+    print(x);
+    if (x == 3) {
+        print(100);
+    }
+    x = x + 1;
+}
+```
+
+## For Loop
+```
+var i = 0;
+for (var j = 1; j <= 3; j = j + 1) {
+    print(j);
+}
+```
+
+### Example: Counting Down
+```
+for (var x = 3; x > 0; x = x - 1) {
+    print(x);
+}
+```
+
+### Example: For loop with empty init and update
+```
+var y = 2;
+for (; y < 5;) {
+    print(y);
+    y = y + 1;
+}
+```
+
+---
+
+# Test Code: var + while + print
+
+```
+var x = 4;
+while (x > 0) {
+    print(x);
+    x = x - 1;
+}
+```
+
+**Expected Output:**
+```
+4
+3
+2
+1
+```

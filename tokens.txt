@@ -1,0 +1,13 @@
+KEYWORDS:
+- var
+- print
+
+OPERATORS:
+- +, -, *, /, =
+
+DELIMITERS:
+- (, ), ;
+
+TOKENS:
+- IDENTIFIER
+- NUMBER
