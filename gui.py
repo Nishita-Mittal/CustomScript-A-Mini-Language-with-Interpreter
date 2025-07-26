@@ -4,24 +4,21 @@ from parser.my_parser import parse_code
 from interpreter.semantic_interpreter import Interpreter
 import os
 
-# Color theme (dark with red accents)
+# Color theme
 BG_COLOR = "#23272e"
 FG_COLOR = "#f8f8f2"
 EDITOR_BG = "#282c34"
 EDITOR_FG = "#f8f8f2"
 OUTPUT_BG = "#1e2127"
-OUTPUT_FG = "#00ff00"  # green for normal output
-OUTPUT_ERROR_FG = "#ff5555"  # red for errors
-OUTPUT_WARN_FG = "#ffff00"  # yellow for warnings
+OUTPUT_FG = "#00ff00"
+OUTPUT_ERROR_FG = "#ff5555"
+OUTPUT_WARN_FG = "#ffff00"
 OUTPUT_FONT = ("Consolas", 12, "bold")
-BUTTON_BG = "#ff5555"  # red button
+BUTTON_BG = "#ff5555"
 BUTTON_FG = "#f8f8f2"
 STATUS_BG = "#23272e"
 STATUS_FG = "#ff5555"
 
-# -----------------------------
-# Enhanced GUI for CustomScript (Tkinter)
-# -----------------------------
 class CustomScriptIDE:
     def __init__(self, root):
         self.root = root
@@ -44,10 +41,22 @@ class CustomScriptIDE:
         menubar.add_cascade(label="Help", menu=helpmenu)
         root.config(menu=menubar)
 
-        # Code editor area
-        self.code_area = scrolledtext.ScrolledText(root, height=20, font=("Consolas", 13), undo=True,
-                                                   bg=EDITOR_BG, fg=EDITOR_FG, insertbackground=FG_COLOR)
-        self.code_area.pack(padx=10, pady=(10,0), fill=tk.BOTH, expand=True)
+        # Code editor frame with line numbers
+        editor_frame = tk.Frame(root)
+        editor_frame.pack(padx=10, pady=(10, 0), fill=tk.BOTH, expand=True)
+
+        self.line_numbers = tk.Text(editor_frame, width=4, padx=4, takefocus=0, border=0,
+                                    background=EDITOR_BG, foreground="#888888", state='disabled',
+                                    font=("Consolas", 13), wrap='none')
+        self.line_numbers.pack(side=tk.LEFT, fill=tk.Y)
+
+        self.code_area = scrolledtext.ScrolledText(editor_frame, height=20, font=("Consolas", 13), undo=True,
+                                                   bg=EDITOR_BG, fg=EDITOR_FG, insertbackground=FG_COLOR,
+                                                   wrap='none')
+        self.code_area.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        self.code_area.bind("<KeyRelease>", self.update_line_numbers)
+        self.code_area.bind("<MouseWheel>", self.sync_scroll)
+        self.code_area.bind("<Button-1>", self.update_line_numbers)
 
         # Button frame
         btn_frame = tk.Frame(root, bg=BG_COLOR)
@@ -72,9 +81,20 @@ class CustomScriptIDE:
         status_bar.pack(side=tk.BOTTOM, fill=tk.X)
 
         root.configure(bg=BG_COLOR)
+        self.update_line_numbers()
+
+    def update_line_numbers(self, event=None):
+        self.line_numbers.config(state='normal')
+        self.line_numbers.delete(1.0, tk.END)
+        line_count = self.code_area.index('end-1c').split('.')[0]
+        line_numbers_string = "\n".join(str(i) for i in range(1, int(line_count)))
+        self.line_numbers.insert(1.0, line_numbers_string)
+        self.line_numbers.config(state='disabled')
+
+    def sync_scroll(self, event):
+        self.line_numbers.yview_moveto(self.code_area.yview()[0])
 
     def run_code(self):
-        """Parse and interpret code from the editor, display output or errors."""
         code = self.code_area.get("1.0", tk.END)
         self.output_area.config(state=tk.NORMAL)
         self.output_area.delete("1.0", tk.END)
@@ -96,26 +116,23 @@ class CustomScriptIDE:
             self.output_area.insert(tk.END, f"Error: {e}\n", "error")
             self.status.set("Error during execution.")
         self.output_area.config(state=tk.DISABLED)
-        # Tag config for colors
         self.output_area.tag_configure("output", foreground=OUTPUT_FG, font=OUTPUT_FONT)
         self.output_area.tag_configure("error", foreground=OUTPUT_ERROR_FG, font=OUTPUT_FONT)
         self.output_area.tag_configure("warning", foreground=OUTPUT_WARN_FG, font=OUTPUT_FONT)
 
     def clear_output(self):
-        """Clear the output area."""
         self.output_area.config(state=tk.NORMAL)
         self.output_area.delete("1.0", tk.END)
         self.output_area.config(state=tk.DISABLED)
         self.status.set("Output cleared.")
 
     def new_file(self):
-        """Create a new file in the editor."""
         self.code_area.delete("1.0", tk.END)
         self.filename = None
         self.status.set("New file.")
+        self.update_line_numbers()
 
     def open_file(self):
-        """Open a .custom file and load its content into the editor."""
         file_path = filedialog.askopenfilename(filetypes=[("CustomScript Files", "*.custom"), ("All Files", "*.*")])
         if file_path:
             with open(file_path, "r") as f:
@@ -123,9 +140,9 @@ class CustomScriptIDE:
                 self.code_area.insert(tk.END, f.read())
             self.filename = file_path
             self.status.set(f"Opened: {os.path.basename(file_path)}")
+            self.update_line_numbers()
 
     def save_file(self):
-        """Save the current editor content to a .custom file."""
         if not self.filename:
             file_path = filedialog.asksaveasfilename(defaultextension=".custom", filetypes=[("CustomScript Files", "*.custom"), ("All Files", "*.*")])
             if not file_path:
@@ -136,7 +153,6 @@ class CustomScriptIDE:
         self.status.set(f"Saved: {os.path.basename(self.filename)}")
 
     def show_manual(self):
-        """Display the content of manual.txt in a message box."""
         try:
             with open("manual.txt", "r") as f:
                 manual = f.read()
@@ -145,7 +161,6 @@ class CustomScriptIDE:
             messagebox.showerror("Error", "manual.txt not found.")
 
     def show_about(self):
-        """Show information about the IDE in an about dialog."""
         messagebox.showinfo("About", "CustomScript IDE\n\nA simple interpreted language with variables, loops, if-else, and more!\n\nDeveloped with Tkinter.")
 
 if __name__ == "__main__":
