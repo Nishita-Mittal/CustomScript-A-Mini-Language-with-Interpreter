@@ -66,7 +66,8 @@ pip install -r requirements.txt
 ```
 
 ## Authors
-- Your Name(s) Here
+Nishita Mittal 
+nishitamittal0816@gmail.com
 
 ## License
 MIT License
