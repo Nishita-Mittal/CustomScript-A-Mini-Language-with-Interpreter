@@ -46,10 +46,10 @@ CustomScript/<br>
 cd CustomScript<br>
 make
 ---
-###▶️ Run
+### ▶️ Run
 ./customscript test.mini
 ---
-###📝 Example Code (test.mini)
+### 📝 Example Code (test.mini)
 - Variable & arithmetic<br>
 let x = 5;<br>
 let y = 10;<br>
@@ -103,6 +103,6 @@ Nishita Mittal<br>
 
 ---
 
-##📜 License
+## 📜 License
 
 This project is for educational purposes and part of a university Compiler Design project.
