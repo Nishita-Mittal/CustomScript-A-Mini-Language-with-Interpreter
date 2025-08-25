@@ -27,11 +27,11 @@ CustomScript/<br>
 │ ├── parser.y # Grammar & Parsing Rules<br>
 │ ├── tokens.h # Token definitions<br>
 │ └── ast.h # Abstract Syntax Tree structures<br>
-│
+│<br>
 │── interpreter/<br>
 │ ├── interpreter.c # Interpreter implementation<br>
 │ └── interpreter.py # (Optional) Python-based interpreter<br>
-│
+│<br>
 │── main.c # Entry point<br>
 │── test.mini # Sample CustomScript program<br>
 │── Makefile # Build instructions<br>
@@ -77,23 +77,23 @@ func add(a, b) {<br>
 
 ## 🛠️ Tools & Technologies
 
--C, Flex, Bison → Compiler & Parser
+- C, Flex, Bison → Compiler & Parser
 
--C/Python → Interpreter
+- C/Python → Interpreter
 
--GTK / Tkinter (Optional) → GUI
+- GTK / Tkinter (Optional) → GUI
 
 ---
 
 ## 📌 Future Improvements
 
--Better error handling
+- Better error handling
 
--More data types (float, arrays, lists)
+- More data types (float, arrays, lists)
 
--File I/O support
+- File I/O support
 
--Optimizations for speed
+- Optimizations for speed
 
 ---
 
