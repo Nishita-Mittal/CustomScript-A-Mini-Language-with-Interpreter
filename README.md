@@ -1,37 +1,37 @@
-📝 CustomScript Compiler & IDE
-🌟 Overview
+💻 CustomScript Compiler & IDE
 
-CustomScript is a simple interpreted language with support for:
+A lightweight interpreted programming language with support for variables, arithmetic, loops, conditionals, and print statements.
+Includes a lexer, parser, interpreter, along with both CLI and GUI (Tkinter) interfaces for running code.
 
-Variables
+📌 Features
 
-Arithmetic
+✔️ Core Language Features:
 
-While loops
+Variable declaration & assignment
 
-If-else
+Arithmetic expressions
 
 Print statements
 
-This project includes a lexer, parser, interpreter, and both CLI and GUI (Tkinter) frontends.
+While loops (including nesting)
 
-🚀 Features
+If-else statements
 
-✨ Variable declaration and assignment
+For loops (C-style, including empty init/update and nesting)
 
-➗ Arithmetic expressions
+Error handling for syntax & runtime errors
 
-🖨️ Print statements
+✔️ Interface Options:
 
-🔁 While loops (including nesting)
+CLI execution via terminal
 
-🔀 If-else statements
+GUI editor with Run button & output display
 
-🔂 For loops (C-style, including empty init/update and nesting)
+✔️ Extras:
 
-⚠️ Error handling (syntax & runtime)
+Language manual (manual.txt) with examples
 
-🖥️ GUI editor with Run button & output display
+Sample .custom test programs
 
 📂 Project Structure
 lexer/my_lexer.py                    # Tokenizer
@@ -47,24 +47,21 @@ CLI
 python main.py
 
 
-👉 Loads and runs code from code.custom.
+👉 Runs code from code.custom.
 
 GUI
 python gui.py
 
 
-👉 Opens a Tkinter-based code editor and output window.
+👉 Opens a Tkinter-based code editor & output window.
 
-📖 Language Syntax Guide
-
-See manual.txt for full details and examples, including the C-style for loop.
-
+🧑‍💻 Example Programs
 🔂 For Loop Example
 for (var i = 0; i < 5; i = i + 1) {
     print(i);
 }
 
-🧩 Example Program
+🔁 While Loop Example
 var x = 3;
 while (x > 0) {
     print(x);
