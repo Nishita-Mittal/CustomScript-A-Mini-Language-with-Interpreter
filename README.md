@@ -21,21 +21,21 @@ It includes a **lexer, parser, AST, and interpreter** with a simple **GUI**, sup
 ---
 
 ## 🗂️ Project Structure  
-CustomScript/
-│── compiler/
-│ ├── lexer.l # Lexical Analyzer
-│ ├── parser.y # Grammar & Parsing Rules
-│ ├── tokens.h # Token definitions
-│ └── ast.h # Abstract Syntax Tree structures
+CustomScript/<br>
+│── compiler/<br>
+│ ├── lexer.l # Lexical Analyzer<br>
+│ ├── parser.y # Grammar & Parsing Rules<br>
+│ ├── tokens.h # Token definitions<br>
+│ └── ast.h # Abstract Syntax Tree structures<br>
 │
-│── interpreter/
-│ ├── interpreter.c # Interpreter implementation
-│ └── interpreter.py # (Optional) Python-based interpreter
+│── interpreter/<br>
+│ ├── interpreter.c # Interpreter implementation<br>
+│ └── interpreter.py # (Optional) Python-based interpreter<br>
 │
-│── main.c # Entry point
-│── test.mini # Sample CustomScript program
-│── Makefile # Build instructions
-│── README.md # Project documentation
+│── main.c # Entry point<br>
+│── test.mini # Sample CustomScript program<br>
+│── Makefile # Build instructions<br>
+│── README.md # Project documentation<br>
 
 
 ---
@@ -43,55 +43,66 @@ CustomScript/
 ## ⚡ Installation & Usage  
 
 ### 🔨 Build  
-cd CustomScript
+cd CustomScript<br>
 make
-
-▶️ Run
+---
+###▶️ Run
 ./customscript test.mini
-📝 Example Code (test.mini)
-// Variable & arithmetic
-let x = 5;
-let y = 10;
-print(x + y);
+---
+###📝 Example Code (test.mini)
+- Variable & arithmetic<br>
+let x = 5;<br>
+let y = 10;<br>
+print(x + y);<br>
 
-// Conditional
-if (x < y) {
-    print("x is smaller");
-}
+- Conditional<br>
+if (x < y) {<br>
+    print("x is smaller");<br>
+}<br>
 
-// Loop
-while (x < 8) {
-    x = x + 1;
-    print(x);
-}
+- Loop<br>
+while (x < 8) {<br>
+    x = x + 1;<br>
+    print(x);<br>
+}<br>
 
-// Function
-func add(a, b) {
-    return a + b;
-}
-print(add(3, 7));
-🛠️ Tools & Technologies
+- Function<br>
+func add(a, b) {<br>
+    return a + b;<br>
+}<br>
 
-C, Flex, Bison → Compiler & Parser
+- print(add(3, 7));<br>
 
-C/Python → Interpreter
+---
 
-GTK / Tkinter (Optional) → GUI
+## 🛠️ Tools & Technologies
 
-📌 Future Improvements
+-C, Flex, Bison → Compiler & Parser
 
-Better error handling
+-C/Python → Interpreter
 
-More data types (float, arrays, lists)
+-GTK / Tkinter (Optional) → GUI
 
-File I/O support
+---
 
-Optimizations for speed
-👨‍💻 Author
+## 📌 Future Improvements
 
-Nishita Mittal
+-Better error handling
+
+-More data types (float, arrays, lists)
+
+-File I/O support
+
+-Optimizations for speed
+
+---
+
+## 👨‍💻 Author<br>
+Nishita Mittal<br>
 📧 nishita.mittal@example.com
 
-📜 License
+---
+
+##📜 License
 
 This project is for educational purposes and part of a university Compiler Design project.
