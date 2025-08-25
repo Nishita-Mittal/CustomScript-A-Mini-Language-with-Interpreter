@@ -1,88 +1,97 @@
-💻 CustomScript Compiler & IDE
+# 🚀 CustomScript Programming Language  
 
-A lightweight interpreted programming language with support for variables, arithmetic, loops, conditionals, and print statements.
-Includes a lexer, parser, interpreter, along with both CLI and GUI (Tkinter) interfaces for running code.
+CustomScript is a **mini programming language** designed as part of a **Compiler Design project**.  
+It includes a **lexer, parser, AST, and interpreter** with a simple **GUI**, supporting variables, expressions, conditionals, loops, functions, and error handling.  
 
-📌 Features
+---
 
-✔️ Core Language Features:
+## 📌 Features  
+- ✨ Lexical Analysis using **Flex**  
+- 🧩 Parsing using **Bison/Yacc**  
+- 🌳 Abstract Syntax Tree (AST)  
+- ⚙️ Interpreter with **expression evaluation**  
+- 🔤 Support for **strings, integers, booleans**  
+- 🔗 Operators: arithmetic, comparison, logical  
+- 🔁 Control flow: `if-else`, `while`, `for`  
+- 🏷️ Variables & Assignments  
+- 📦 Functions with return values  
+- 📌 Nested Scopes  
+- ⚡ Basic error messages  
 
-Variable declaration & assignment
+---
 
-Arithmetic expressions
-
-Print statements
-
-While loops (including nesting)
-
-If-else statements
-
-For loops (C-style, including empty init/update and nesting)
-
-Error handling for syntax & runtime errors
-
-✔️ Interface Options:
-
-CLI execution via terminal
-
-GUI editor with Run button & output display
-
-✔️ Extras:
-
-Language manual (manual.txt) with examples
-
-Sample .custom test programs
-
-📂 Project Structure
-lexer/my_lexer.py                    # Tokenizer
-parser/my_parser.py                  # Parser (PLY)
-interpreter/semantic_interpreter.py  # Interpreter
-main.py                              # CLI entry point
-gui.py                               # Tkinter GUI
-manual.txt                           # Language manual & examples
-*.custom                             # Sample test programs
-
-▶️ How to Run
-CLI
-python main.py
+## 🗂️ Project Structure  
+CustomScript/
+│── compiler/
+│ ├── lexer.l # Lexical Analyzer
+│ ├── parser.y # Grammar & Parsing Rules
+│ ├── tokens.h # Token definitions
+│ └── ast.h # Abstract Syntax Tree structures
+│
+│── interpreter/
+│ ├── interpreter.c # Interpreter implementation
+│ └── interpreter.py # (Optional) Python-based interpreter
+│
+│── main.c # Entry point
+│── test.mini # Sample CustomScript program
+│── Makefile # Build instructions
+│── README.md # Project documentation
 
 
-👉 Runs code from code.custom.
+---
 
-GUI
-python gui.py
+## ⚡ Installation & Usage  
 
+### 🔨 Build  
+```bash
+cd CustomScript
+make
+▶️ Run
+./customscript test.mini
+📝 Example Code (test.mini)
+// Variable & arithmetic
+let x = 5;
+let y = 10;
+print(x + y);
 
-👉 Opens a Tkinter-based code editor & output window.
-
-🧑‍💻 Example Programs
-🔂 For Loop Example
-for (var i = 0; i < 5; i = i + 1) {
-    print(i);
+// Conditional
+if (x < y) {
+    print("x is smaller");
 }
 
-🔁 While Loop Example
-var x = 3;
-while (x > 0) {
+// Loop
+while (x < 8) {
+    x = x + 1;
     print(x);
-    x = x - 1;
 }
 
-⚙️ Requirements
+// Function
+func add(a, b) {
+    return a + b;
+}
+print(add(3, 7));
+🛠️ Tools & Technologies
 
-Python 3.7+
+C, Flex, Bison → Compiler & Parser
 
-ply
+C/Python → Interpreter
 
-📦 Install dependencies:
+GTK / Tkinter (Optional) → GUI
 
-pip install -r requirements.txt
+📌 Future Improvements
 
-👩‍💻 Author
+Better error handling
+
+More data types (float, arrays, lists)
+
+File I/O support
+
+Optimizations for speed
+👨‍💻 Author
 
 Nishita Mittal
-📧 nishitamittal0816@gmail.com
+📧 nishita.mittal@example.com
 
 📜 License
 
-MIT License
+This project is for educational purposes and part of a university Compiler Design project.
