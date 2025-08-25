@@ -43,9 +43,9 @@ CustomScript/
 ## ⚡ Installation & Usage  
 
 ### 🔨 Build  
-```bash
 cd CustomScript
 make
+
 ▶️ Run
 ./customscript test.mini
 📝 Example Code (test.mini)
